@@ -3,6 +3,7 @@ php:
   - 5.4
   - 5.5
 
+
 install: composer install --dev
 script: php vendor/bin/phpunit tests
 
