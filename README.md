@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/pklink/dotor.png?branch=master)](https://travis-ci.org/pklink/dotor)
+
 # Dotor
 
 Dotor is a simple library for PHP 5.3 and higher to access an array by using dot notification. This can be useful for handling array configurations or so…
