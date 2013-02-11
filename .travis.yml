@@ -4,5 +4,5 @@ php:
   - 5.5
 
 install: composer install --dev
-script: phpunit tests
+script: php vendor/bin/phpunit tests
 
