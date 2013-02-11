@@ -1,6 +1,6 @@
 # Dotor
 
-Dotor is a simple library for PHP 5.3 and higher to access an array by using dot notification. This can be useful for using Dotor for handling array configurations or so…
+Dotor is a simple library for PHP 5.3 and higher to access an array by using dot notification. This can be useful for handling array configurations or so…
 
 ## Installation
 
@@ -61,7 +61,7 @@ $config->get('asdasdas'); // returns null
 $config->get('asdasdas', 'blah'); // returns 'blah'
 ```
 
-## Run test
+## Run tests
 
 ```bash
 phpunit tests/
