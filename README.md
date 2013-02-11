@@ -66,13 +66,15 @@ $config->get('asdasdas', 'blah'); // returns 'blah'
 ## Run tests
 
 ```bash
-phpunit tests/
+php composer.phar install --dev
+php vendor/bin/phpunit tests/
 ```
 
 or with code-coverage-report
 
 ```bash
-phpunit --coverage-html output tests/
+php composer.phar install --dev
+php vendor/bin/phpunit --coverage-html output tests/
 ```
 
 ## License
