@@ -11,7 +11,7 @@ Create or update your `composer.json`
 ```json
 {
     "require": {
-        "pklink/dotor": "dev-master"
+        "pklink/dotor": "0.*"
     }
 }
 ```
