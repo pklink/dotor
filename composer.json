@@ -1,7 +1,7 @@
 {
     "name":        "pklink/dotor",
     "description": "Easy access to array values using dot notation. Useful for handling configurations or so",
-    "version":     "0.1.2",
+    "version":     "0.1.2-dev",
     "keywords":    ["array", "dot-notation", "dot", "config", "configuration", "settings"],
     "homepage":    "https://github.com/pklink/dotor",
     "license":     "BSD-2-Clause",
