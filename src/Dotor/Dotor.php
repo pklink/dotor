@@ -32,10 +32,10 @@ class Dotor
      */
     public function get($param = null, $default = null)
     {
-        // $param must be a string or integer
+        // $param has to be a string or integer
         if (!is_string($param) && !(is_int($param)) && $param !== null)
         {
-            throw new \InvalidArgumentException('$param must be a string, integer or null');
+            throw new \InvalidArgumentException('$param has to be a string, integer or null');
         }
 
         // if param is null get the param-array
@@ -90,7 +90,7 @@ class Dotor
             // check if $default is scalar
             if (!is_scalar($default))
             {
-                throw new \InvalidArgumentException('$default must be scalar');
+                throw new \InvalidArgumentException('$default has to be scalar');
             }
 
             return $default;
