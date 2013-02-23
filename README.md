@@ -43,7 +43,8 @@ $config = new \Dotor\Dotor([
         'password' => 'password',
         'database' => 'blah',
         'type'     => 'sqlite'
-    ]
+    ],
+    'object' => new stdClass()
 ]);
 ```
 
@@ -61,6 +62,15 @@ You can find more examples in the *example.php*
 ```php
 $config->get('asdasdas'); // returns null
 $config->get('asdasdas', 'blah'); // returns 'blah'
+```
+
+### Scalar values
+
+```php
+$config->get('object'); // returns ''
+$config->get('object', 'blah'); // returns 'blah'
+$config->get('not-existing'); // returns ''
+$config->get('not-existing', []); // throw InvalidArgumentException
 ```
 
 ## Run tests

@@ -27,7 +27,7 @@ class Dotor
     /**
      * @param string|int|null $param
      * @param null $default
-     * @return array|null|string
+     * @return mixed
      * @throws \InvalidArgumentException
      */
     public function get($param = null, $default = null)
@@ -71,6 +71,34 @@ class Dotor
         }
 
         return $value;
+    }
+
+
+    /**
+     * @param string|int|null $param
+     * @param mixed $default a scalar value
+     * @return mixed a scalar value
+     * @throws \InvalidArgumentException
+     */
+    public function getScalar($param = null, $default = '')
+    {
+        $value = $this->get($param, $default);
+
+        // check if $param is scalar
+        if (!is_scalar($value))
+        {
+            // check if $default is scalar
+            if (!is_scalar($default))
+            {
+                throw new \InvalidArgumentException('$default must be scalar');
+            }
+
+            return $default;
+        }
+        else
+        {
+            return $value;
+        }
     }
 
 }

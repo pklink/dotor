@@ -24,7 +24,8 @@ class DotorTest extends \PHPUnit_Framework_TestCase
                 '02' => '002',
                 '03' => [
                     'index'  => 'value',
-                    'object' => new \stdClass()
+                    'object' => new \stdClass(),
+                    'int'    => 3,
                 ],
             ],
         ];
@@ -50,23 +51,73 @@ class DotorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(12312, $this->instance->get('asdasdwq.yxcasad', 12312));
         $this->assertEquals('yep', $this->instance->get('....', 'yep'));
         $this->assertEquals('yep', $this->instance->get('bla....', 'yep'));
+
+        // array
+        try {
+            $this->instance->get(array());
+            $this->fail('No exception has been thrown.');
+        } catch (\InvalidArgumentException $e) {
+            $this->assertTrue(true);
+        } catch (\Exception $e) {
+            $this->fail('Unexpected exception has been thrown.');
+        }
+
+        // object
+        try {
+            $this->instance->get(new \stdClass());
+            $this->fail('No exception has been thrown.');
+        } catch (\InvalidArgumentException $e) {
+            $this->assertTrue(true);
+        } catch (\Exception $e) {
+            $this->fail('Unexpected exception has been thrown.');
+        }
     }
 
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testExceptionWithArray()
+    public function testGetScalar()
     {
-        $this->instance->get(array());
-    }
+        /*
+        $this->array = [
+            'bla' => 'blu',
+            'level0' => [
+                '01' => '001',
+                '02' => '002',
+                '03' => [
+                    'index'  => 'value',
+                    'object' => new \stdClass(),
+                    'int' => 3,
+                ],
+            ],
+        ];
+        */
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
-    public function testExceptionWithObject()
-    {
-        $this->instance->get(new \stdClass());
+        $this->assertEquals('blu', $this->instance->getScalar('bla'));
+        $this->assertEquals('002', $this->instance->getScalar('level0.02'));
+        $this->assertEquals('', $this->instance->getScalar('level0.03.object'));
+        $this->assertEquals(55, $this->instance->getScalar('level0.03.object', 55));
+        $this->assertEquals('', $this->instance->getScalar('asdqyyyf'));
+        $this->assertEquals(55, $this->instance->getScalar('asdqyyyf', 55));
+
+        // non scalar default
+        $this->assertEquals('blu', $this->instance->getScalar('bla', new \stdClass()));
+
+        try {
+            $this->instance->getScalar('level0.03.object', new \stdClass());
+            $this->fail('No exception has been thrown.');
+        } catch (\InvalidArgumentException $e) {
+            $this->assertTrue(true);
+        } catch (\Exception $e) {
+            $this->fail('Unexpected exception has been thrown.');
+        }
+
+        try {
+            $this->instance->getScalar('vlvlvlv', new \stdClass());
+            $this->fail('No exception has been thrown.');
+        } catch (\InvalidArgumentException $e) {
+            $this->assertTrue(true);
+        } catch (\Exception $e) {
+            $this->fail('Unexpected exception has been thrown.');
+        }
     }
 
 }
