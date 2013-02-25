@@ -1,6 +1,4 @@
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=pierre111&url=https://github.com/pklink/dodoh.git&title=Dotor&language=&tags=github&category=software)
-
-# Dotor
+# Dotor [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=pierre111&url=https://github.com/pklink/dodoh.git&title=Dotor&language=&tags=github&category=software)
 
 Dotor is a simple library for PHP 5.3 and higher to access an array by using dot notification. This can be useful for handling array configurations or so…
 
@@ -88,6 +86,7 @@ php vendor/bin/phpunit --coverage-html output tests/
 ```
 
 [![Build Status](https://drone.io/github.com/pklink/dotor/status.png)](https://drone.io/github.com/pklink/dotor/latest)
+[![Build Status](https://travis-ci.org/pklink/dotor.png?branch=master)](https://travis-ci.org/pklink/dotor)
 
 ## License
 
