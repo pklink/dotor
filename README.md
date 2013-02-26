@@ -71,6 +71,14 @@ $config->get('not-existing'); // returns ''
 $config->get('not-existing', []); // throw InvalidArgumentException
 ```
 
+### Array
+
+```php
+$config->getArray('database'); // returns the database array
+$config->getArray('notexit');  // returns []
+$config->getArray('notexit', [1]);  // returns [1]
+```
+
 ## Run tests
 
 ```bash
