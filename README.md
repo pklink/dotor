@@ -58,24 +58,24 @@ You can find more examples in the *example.php*
 ### Default values
 
 ```php
-$config->get('asdasdas'); // returns null
+$config->get('asdasdas');         // returns null
 $config->get('asdasdas', 'blah'); // returns 'blah'
 ```
 
 ### Scalar values
 
 ```php
-$config->get('object'); // returns ''
-$config->get('object', 'blah'); // returns 'blah'
-$config->get('not-existing'); // returns ''
-$config->get('not-existing', []); // throw InvalidArgumentException
+$config->getScalar('object');           // returns ''
+$config->getScalar('object', 'blah');   // returns 'blah'
+$config->getScalar('not-existing');     // returns ''
+$config->getScalar('not-existing', []); // throw InvalidArgumentException
 ```
 
 ### Arrays
 
 ```php
-$config->getArray('database'); // returns the database array
-$config->getArray('notexit');  // returns []
+$config->getArray('database');      // returns the database array
+$config->getArray('notexit');       // returns []
 $config->getArray('notexit', [1]);  // returns [1]
 ```
 
