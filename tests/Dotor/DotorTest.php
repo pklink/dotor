@@ -74,23 +74,19 @@ class DotorTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    public function testGetArray()
+    {
+        $this->assertEquals($this->array['level0'], $this->instance->getArray('level0'));
+        $this->assertEquals($this->array['level0']['03'], $this->instance->getArray('level0.03'));
+        $this->assertEquals([], $this->instance->getArray('level0.03.object'));
+        $this->assertEquals(array(1), $this->instance->getArray('level0.03.object', array(1)));
+        $this->assertEquals([], $this->instance->getArray('asdqyyyf'));
+        $this->assertEquals(array(1), $this->instance->getArray('asdqyyyf', array(1)));
+    }
+
+
     public function testGetScalar()
     {
-        /*
-        $this->array = [
-            'bla' => 'blu',
-            'level0' => [
-                '01' => '001',
-                '02' => '002',
-                '03' => [
-                    'index'  => 'value',
-                    'object' => new \stdClass(),
-                    'int' => 3,
-                ],
-            ],
-        ];
-        */
-
         $this->assertEquals('blu', $this->instance->getScalar('bla'));
         $this->assertEquals('002', $this->instance->getScalar('level0.02'));
         $this->assertEquals('', $this->instance->getScalar('level0.03.object'));

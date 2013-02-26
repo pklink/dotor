@@ -84,7 +84,7 @@ class Dotor
     {
         $value = $this->get($param, $default);
 
-        // check if $param is scalar
+        // check if $value is scalar
         if (!is_scalar($value))
         {
             // check if $default is scalar
@@ -99,6 +99,28 @@ class Dotor
         {
             return $value;
         }
+    }
+
+
+    /**
+     * @param string|int|null $param
+     * @param array $default
+     * @return array
+     */
+    public function getArray($param = null, array $default = [])
+    {
+        $value = $this->get($param, $default);
+
+        // check if $value is an array
+        if (!is_array($value))
+        {
+            return $default;
+        }
+        else
+        {
+            return $value;
+        }
+
     }
 
 }
