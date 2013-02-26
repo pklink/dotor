@@ -71,7 +71,7 @@ $config->get('not-existing'); // returns ''
 $config->get('not-existing', []); // throw InvalidArgumentException
 ```
 
-### Array
+### Arrays
 
 ```php
 $config->getArray('database'); // returns the database array
