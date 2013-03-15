@@ -75,6 +75,55 @@ class Dotor
 
 
     /**
+     * Alias for Dotot::getBoolean
+     *
+     * @param string $param
+     * @param boolean $defaul
+     * @return boolean
+     */
+    public function getBool($param, $defaul)
+    {
+        return $this->getBoolean($param, $defaul);
+    }
+
+
+    /**
+     * @param string $param
+     * @param boolean $default
+     * @return boolean
+     * @throws \InvalidArgumentException
+     */
+    public function getBoolean($param, $default)
+    {
+        $value = $this->get($param, $default);
+
+        // check if $value is boolean
+        if (is_bool($value))
+        {
+            return $value;
+        }
+        else if ($value === '0' || $value === 0)
+        {
+            return false;
+        }
+        else if ($value === '1' || $value === 1)
+        {
+            return true;
+        }
+        else
+        {
+            // check if $default is boolean
+            if (!is_bool($default))
+            {
+                throw new \InvalidArgumentException('$default has to be boolean');
+            }
+
+            return $default;
+        }
+    }
+
+
+    /**
      * @param string|int|null $param
      * @param mixed $default a scalar value
      * @return mixed a scalar value

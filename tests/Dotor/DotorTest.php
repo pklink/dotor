@@ -28,6 +28,12 @@ class DotorTest extends \PHPUnit_Framework_TestCase
                     'int'    => 3,
                 ],
             ],
+            'false'      => false,
+            'true'       => true,
+            'zeroString' => '0',
+            'zeroInt'    => 0,
+            'oneString'  => '1',
+            'oneInt'     => 1,
         ];
 
         $this->instance = new Dotor($this->array);
@@ -108,6 +114,52 @@ class DotorTest extends \PHPUnit_Framework_TestCase
 
         try {
             $this->instance->getScalar('vlvlvlv', new \stdClass());
+            $this->fail('No exception has been thrown.');
+        } catch (\InvalidArgumentException $e) {
+            $this->assertTrue(true);
+        } catch (\Exception $e) {
+            $this->fail('Unexpected exception has been thrown.');
+        }
+    }
+
+
+    public function testGetBoolean()
+    {
+        $this->assertFalse($this->instance->getBoolean('bla', false));
+        $this->assertFalse($this->instance->getBoolean('level0.02', false));
+        $this->assertFalse($this->instance->getBoolean('level0.03.object', false));
+        $this->assertTrue($this->instance->getBoolean('level0.03.object', true));
+        $this->assertTrue($this->instance->getBoolean('asdqyyyf', true));
+        $this->assertTrue($this->instance->getBoolean('asdqyyyf', true));
+        $this->assertFalse($this->instance->getBoolean('false', true));
+        $this->assertTrue($this->instance->getBoolean('true', false));
+
+        $this->assertFalse($this->instance->getBool('bla', false));
+        $this->assertFalse($this->instance->getBool('level0.02', false));
+        $this->assertFalse($this->instance->getBool('level0.03.object', false));
+        $this->assertTrue($this->instance->getBool('level0.03.object', true));
+        $this->assertTrue($this->instance->getBool('asdqyyyf', true));
+        $this->assertTrue($this->instance->getBool('asdqyyyf', true));
+        $this->assertFalse($this->instance->getBool('false', true));
+        $this->assertTrue($this->instance->getBool('true', false));
+
+        $this->assertFalse($this->instance->getBoolean('zeroString', true));
+        $this->assertFalse($this->instance->getBoolean('zeroInt', true));
+        $this->assertTrue($this->instance->getBoolean('oneString', false));
+        $this->assertTrue($this->instance->getBoolean('oneInt', false));
+
+        // non boolean default
+        try {
+            $this->instance->getBoolean('level0.03.object', new \stdClass());
+            $this->fail('No exception has been thrown.');
+        } catch (\InvalidArgumentException $e) {
+            $this->assertTrue(true);
+        } catch (\Exception $e) {
+            $this->fail('Unexpected exception has been thrown.');
+        }
+
+        try {
+            $this->instance->getBoolean('vlvlvlv', new \stdClass());
             $this->fail('No exception has been thrown.');
         } catch (\InvalidArgumentException $e) {
             $this->assertTrue(true);

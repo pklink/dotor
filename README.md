@@ -42,7 +42,13 @@ $config = new \Dotor\Dotor([
         'database' => 'blah',
         'type'     => 'sqlite'
     ],
-    'object' => new stdClass()
+    'object' => new stdClass(),
+    'false'      => false,
+    'true'       => true,
+    'zeroString' => '0',
+    'zeroInt'    => 0,
+    'oneString'  => '1',
+    'oneInt'     => 1,
 ]);
 ```
 
@@ -52,8 +58,6 @@ $config = new \Dotor\Dotor([
 $config->get('name');
 $config->get('database.server');
 ```
-
-You can find more examples in the *example.php*
 
 ### Default values
 
@@ -77,6 +81,17 @@ $config->getScalar('not-existing', []); // throw InvalidArgumentException
 $config->getArray('database');      // returns the database array
 $config->getArray('notexit');       // returns []
 $config->getArray('notexit', [1]);  // returns [1]
+```
+
+### Boolean
+
+```php
+$config->getBoolean('database', false);   // returns false
+$config->getBool('database', true);       // returns true
+$config->getBoolean('zeroString', true);  // returns false
+$config->getBoolean('zeroInt', true);     // returns false
+$config->getBoolean('oneString', false);  // returns true
+$config->getBoolean('oneInt', false);     // returns true
 ```
 
 ## Run tests
