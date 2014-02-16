@@ -33,14 +33,12 @@ class Dotor
     public function get($param = null, $default = null)
     {
         // $param has to be a string or integer
-        if (!is_string($param) && !(is_int($param)) && $param !== null)
-        {
+        if (!is_string($param) && !(is_int($param)) && $param !== null) {
             throw new \InvalidArgumentException('$param has to be a string, integer or null');
         }
 
         // if param is null get the param-array
-        if ($param === null)
-        {
+        if ($param === null) {
             return $this->params;
         }
 
@@ -53,19 +51,16 @@ class Dotor
         $value = '';
 
         // iterate splitted $param
-        foreach ($segments as $index => $segment)
-        {
+        foreach ($segments as $index => $segment) {
             // if param doesn't exist return default value
-            if (!isset($source[$segment]))
-            {
+            if (!isset($source[$segment])) {
                 return $default;
             }
 
             // save value
             $value = $source[$segment];
 
-            if ($index < count($segments)-1)
-            {
+            if ($index < count($segments)-1) {
                 $source = $value;
             }
         }
@@ -98,23 +93,15 @@ class Dotor
         $value = $this->get($param, $default);
 
         // check if $value is boolean
-        if (is_bool($value))
-        {
+        if (is_bool($value)) {
             return $value;
-        }
-        else if ($value === '0' || $value === 0)
-        {
+        } elseif ($value === '0' || $value === 0) {
             return false;
-        }
-        else if ($value === '1' || $value === 1)
-        {
+        } elseif ($value === '1' || $value === 1) {
             return true;
-        }
-        else
-        {
+        } else {
             // check if $default is boolean
-            if (!is_bool($default))
-            {
+            if (!is_bool($default)) {
                 throw new \InvalidArgumentException('$default has to be boolean');
             }
 
@@ -134,18 +121,14 @@ class Dotor
         $value = $this->get($param, $default);
 
         // check if $value is scalar
-        if (!is_scalar($value))
-        {
+        if (!is_scalar($value)) {
             // check if $default is scalar
-            if (!is_scalar($default))
-            {
+            if (!is_scalar($default)) {
                 throw new \InvalidArgumentException('$default has to be scalar');
             }
 
             return $default;
-        }
-        else
-        {
+        } else {
             return $value;
         }
     }
@@ -161,15 +144,11 @@ class Dotor
         $value = $this->get($param, $default);
 
         // check if $value is an array
-        if (!is_array($value))
-        {
+        if (!is_array($value)) {
             return $default;
-        }
-        else
-        {
+        } else {
             return $value;
         }
-
     }
-
 }
+

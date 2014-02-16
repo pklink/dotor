@@ -167,5 +167,5 @@ class DotorTest extends \PHPUnit_Framework_TestCase
             $this->fail('Unexpected exception has been thrown.');
         }
     }
-
 }
+
