@@ -26,7 +26,7 @@ class Dotor
 
     /**
      * @param string|int|null $param
-     * @param null $default
+     * @param mixed $default
      * @return mixed
      * @throws \InvalidArgumentException
      */
@@ -76,7 +76,7 @@ class Dotor
      * @param boolean $default
      * @return boolean
      */
-    public function getBool($param, $default)
+    public function getBool($param, $default = true)
     {
         return $this->getBoolean($param, $default);
     }
@@ -86,9 +86,8 @@ class Dotor
      * @param string $param
      * @param boolean $default
      * @return boolean
-     * @throws \InvalidArgumentException
      */
-    public function getBoolean($param, $default)
+    public function getBoolean($param, $default = true)
     {
         $value = $this->get($param, $default);
 
@@ -99,13 +98,10 @@ class Dotor
             return false;
         } elseif ($value === '1' || $value === 1) {
             return true;
-        } else {
-            // check if $default is boolean
-            if (!is_bool($default)) {
-                throw new \InvalidArgumentException('$default has to be boolean');
-            }
-
+        } elseif (is_bool($default)) {
             return $default;
+        } else {
+            return true;
         }
     }
 

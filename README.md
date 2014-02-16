@@ -49,6 +49,7 @@ $config = new \Dotor\Dotor([
     'zeroInt'    => 0,
     'oneString'  => '1',
     'oneInt'     => 1,
+    'twoString'  => '2',
 ]);
 ```
 
@@ -93,6 +94,16 @@ $config->getBoolean('zeroInt', true);     // returns false
 $config->getBoolean('oneString', false);  // returns true
 $config->getBoolean('oneInt', false);     // returns true
 ```
+
+The `getBoolean()`-method and their alias `getBool()` handle the string `'1'` and the integer `1` as `true`. Otherwise this
+method returns the given `$default` or `true`.
+
+```php
+$config->getBoolean('oneString', false);   // returns true
+$config->getBoolean('twoString', false);   // returns false
+$config->getBoolean('twoString');          // returns true
+```
+
 
 ## Run tests
 

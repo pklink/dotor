@@ -34,6 +34,7 @@ class DotorTest extends \PHPUnit_Framework_TestCase
             'zeroInt'    => 0,
             'oneString'  => '1',
             'oneInt'     => 1,
+            'twoString'  => '2',
         ];
 
         $this->instance = new Dotor($this->array);
@@ -149,23 +150,15 @@ class DotorTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->instance->getBoolean('oneInt', false));
 
         // non boolean default
-        try {
-            $this->instance->getBoolean('level0.03.object', new \stdClass());
-            $this->fail('No exception has been thrown.');
-        } catch (\InvalidArgumentException $e) {
-            $this->assertTrue(true);
-        } catch (\Exception $e) {
-            $this->fail('Unexpected exception has been thrown.');
-        }
+        $this->assertTrue($this->instance->getBool('level0.03.object', new \stdClass()));
 
-        try {
-            $this->instance->getBoolean('vlvlvlv', new \stdClass());
-            $this->fail('No exception has been thrown.');
-        } catch (\InvalidArgumentException $e) {
-            $this->assertTrue(true);
-        } catch (\Exception $e) {
-            $this->fail('Unexpected exception has been thrown.');
-        }
+        // no default
+        $this->assertTrue($this->instance->getBool('level0.03.object'));
+
+        // '1'-handling
+        $this->assertTrue($this->instance->getBoolean('oneString', false));
+        $this->assertFalse($this->instance->getBoolean('twoString', false));
+        $this->assertTrue($this->instance->getBoolean('twoString'));
     }
 }
 
