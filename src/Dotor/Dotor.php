@@ -73,12 +73,12 @@ class Dotor
      * Alias for Dotot::getBoolean
      *
      * @param string $param
-     * @param boolean $defaul
+     * @param boolean $default
      * @return boolean
      */
-    public function getBool($param, $defaul)
+    public function getBool($param, $default)
     {
-        return $this->getBoolean($param, $defaul);
+        return $this->getBoolean($param, $default);
     }
 
 
