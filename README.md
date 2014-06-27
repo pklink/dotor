@@ -1,6 +1,6 @@
 # Dotor [![Build Status](https://travis-ci.org/pklink/dotor.png?branch=master)](https://travis-ci.org/pklink/dotor) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/pklink/dotor/badges/quality-score.png?s=8339e7587ee2f331e692d29a304f4e97d2455fac)](https://scrutinizer-ci.com/g/pklink/dotor/)
 
-Dotor is a simple library for PHP 5.3 and higher to access an array by using dot notification. This can be useful for handling array configurations or so…
+Dotor is a library for PHP 5.4 and higher to access an array by using dot notification. This can be useful for handling array configurations or so…
 
 ## Installation
 
@@ -11,7 +11,7 @@ Create or update your `composer.json`
 ```json
 {
     "require": {
-        "pklink/dotor": "0.*"
+        "pklink/dotor": "1.*"
     }
 }
 ```
@@ -33,7 +33,8 @@ include __DIR__ . '/vendor/autoload.php';
 Using `Dotor is very simple. Create an instance with your (configurarion) array...
 
 ```php
-$config = new \Dotor\Dotor([
+// config-sample.php
+return [
     'name' => 'sample configuration',
     'database' => [
         'server'   => 'localhost',
@@ -50,7 +51,12 @@ $config = new \Dotor\Dotor([
     'oneString'  => '1',
     'oneInt'     => 1,
     'twoString'  => '2',
-]);
+];
+```
+
+```php
+$loader = ArrayLoader::createFromFile('./config-sample.php');
+$config = new Dotor($loader);
 ```
 
 ... and get the content by the `get()`-method.
