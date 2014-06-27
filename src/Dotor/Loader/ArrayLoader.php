@@ -12,11 +12,14 @@ class ArrayLoader implements Loader
     private $config = [];
 
     /**
-     * @return array
+     * @param array $config
+     * @return ArrayLoader
      */
-    public function get()
+    public static function create($config = [])
     {
-        return $this->config;
+        $instance = new ArrayLoader();
+        $instance->load($config);
+        return $instance;
     }
 
     /**
@@ -25,5 +28,13 @@ class ArrayLoader implements Loader
     public function load($config = [])
     {
         $this->config = $config;
+    }
+
+    /**
+     * @return array
+     */
+    public function get()
+    {
+        return $this->config;
     }
 }

@@ -16,6 +16,11 @@ class ArrayLoaderTest extends \PHPUnit_Framework_TestCase
         parent::setUp();
     }
 
+    public function testCreate()
+    {
+        $loader = ArrayLoader::create($this->array);
+        $this->assertEquals($this->array, $loader->get());
+    }
 
     public function testGet()
     {

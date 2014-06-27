@@ -39,8 +39,7 @@ class DotorArrayLoaderTest extends \PHPUnit_Framework_TestCase
             'twoString'  => '2',
         ];
 
-        $loader = new ArrayLoader();
-        $loader->load($this->array);
+        $loader = ArrayLoader::create($this->array);
         $this->instance = new Dotor($loader);
     }
 
