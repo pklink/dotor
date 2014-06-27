@@ -2,7 +2,9 @@
 
 namespace Dotor;
 
-class DotorTest extends \PHPUnit_Framework_TestCase
+use Dotor\Loader\ArrayLoader;
+
+class DotorArrayLoaderTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -37,7 +39,9 @@ class DotorTest extends \PHPUnit_Framework_TestCase
             'twoString'  => '2',
         ];
 
-        $this->instance = new Dotor($this->array);
+        $loader = new ArrayLoader();
+        $loader->load($this->array);
+        $this->instance = new Dotor($loader);
     }
 
     public function testGet()

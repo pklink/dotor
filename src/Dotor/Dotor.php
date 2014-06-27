@@ -16,11 +16,15 @@ class Dotor
 
 
     /**
-     * @param array $config
+     * @param Loader|array $config
      */
-    public function __construct(array $config = [])
+    public function __construct($config)
     {
-        $this->params = $config;
+        if (is_array($config)) {
+            $this->params = $config;
+        } elseif ($config instanceof Loader) {
+            $this->params = $config->get();
+        }
     }
 
 
