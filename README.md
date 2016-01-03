@@ -1,6 +1,6 @@
 # Dotor [![Build Status](https://travis-ci.org/pklink/dotor.png?branch=master)](https://travis-ci.org/pklink/dotor) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/pklink/dotor/badges/quality-score.png?s=8339e7587ee2f331e692d29a304f4e97d2455fac)](https://scrutinizer-ci.com/g/pklink/dotor/)
 
-Dotor is a library for PHP 5.4 and higher to access an array by using dot notification. This can be useful for handling array configurations or something like that
+Dotor is a library for PHP 5.6 and higher to access an array by using dot notification. This can be useful for handling array configurations or something like that
 
 ## Installation
 
@@ -11,7 +11,7 @@ Create or update your `composer.json`
 ```json
 {
     "require": {
-        "pklink/dotor": "1.*"
+        "pklink/dotor": "2.*"
     }
 }
 ```
