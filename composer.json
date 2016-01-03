@@ -1,14 +1,14 @@
 {
     "name":        "pklink/dotor",
-    "description": "Easy access to array values using dot notation. Useful for handling configurations or so",
+    "description": "Easy access to array values using dot notation. Useful for handling configurations or something like that",
     "keywords":    ["array", "dot-notation", "dot", "config", "configuration", "settings"],
     "homepage":    "https://github.com/pklink/dotor",
     "license":     "BSD-2-Clause",
     "authors": [
         {
             "name":     "Pierre Klink",
-            "email":    "dev@klinks.info",
-            "homepage": "http://www.klinks.info" }
+            "email":    "dev@klink.xyz",
+            "homepage": "http://www.klink.xyz" }
     ],
     "autoload": {
         "psr-0": {"Dotor": "src/"}
