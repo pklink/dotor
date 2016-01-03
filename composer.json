@@ -1,22 +1,32 @@
 {
-    "name":        "pklink/dotor",
-    "description": "Easy access to array values using dot notation. Useful for handling configurations or something like that",
-    "keywords":    ["array", "dot-notation", "dot", "config", "configuration", "settings"],
-    "homepage":    "https://github.com/pklink/dotor",
-    "license":     "BSD-2-Clause",
-    "authors": [
-        {
-            "name":     "Pierre Klink",
-            "email":    "dev@klink.xyz",
-            "homepage": "http://www.klink.xyz" }
-    ],
-    "autoload": {
-        "psr-0": {"Dotor": "src/"}
-    },
-    "require": {
-        "php": ">=5.4.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~4.1"
+  "name": "pklink/dotor",
+  "description": "Easy access to array values using dot notation. Useful for handling configurations or something like that",
+  "keywords": [
+    "array",
+    "dot-notation",
+    "dot",
+    "config",
+    "configuration",
+    "settings"
+  ],
+  "homepage": "https://github.com/pklink/dotor",
+  "license": "BSD-2-Clause",
+  "authors": [
+    {
+      "name": "Pierre Klink",
+      "email": "dev@klink.xyz",
+      "homepage": "http://www.klink.xyz"
     }
+  ],
+  "autoload": {
+    "psr-0": {
+      "Dotor": "src/"
+    }
+  },
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~5.0"
+  }
 }
